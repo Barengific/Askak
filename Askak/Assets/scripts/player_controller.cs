@@ -3,16 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Data;
+using UnityEngine.UI;
 
 public class player_controller : MonoBehaviour {
     // Start is called before the first frame update
 
     public FixedJoystick  mjs;
     public DynamicJoystick ljs;
-    void Start(){
+    public Button jump;
+
+    void Start()
+    {
+        Button btn = jump.GetComponent<Button>();
+        btn.onClick.AddListener(TaskOnClick);
     }
 
-// Update is called once per frame
+    void TaskOnClick()
+    {
+        Debug.Log("You have clicked the button!");
+        transform.Translate(Vector3.up * 600 * (Time.deltaTime/2), Space.World);
+    }
+
+    // Update is called once per frame
     void Update(){
         float hoz = mjs.Horizontal;
         float ver = mjs.Vertical;
