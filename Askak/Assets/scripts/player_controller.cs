@@ -12,17 +12,38 @@ public class player_controller : MonoBehaviour {
     public DynamicJoystick ljs;
     public Button jump;
 
-    void Start()
-    {
+    private CharacterController controller;
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
+
+    public float thrust = -5.0f;
+    public Rigidbody rb;
+
+    public float distToGround;
+
+    Collider collider;
+
+
+    void Start()    {
         Button btn = jump.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
+        rb = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
+        distToGround = collider.bounds.extents.y;
     }
 
-    void TaskOnClick()
-    {
-        Debug.Log("You have clicked the button!");
-        transform.Translate(Vector3.up * 600 * (Time.deltaTime/2), Space.World);
+    public Boolean IsGrounded() {
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
     }
+
+void TaskOnClick()    {
+        
+        if (IsGrounded()) {
+        Debug.Log("You have clicked the button!");
+            rb.velocity = rb.velocity + Vector3.up * 5;
+            }
+
+        }
 
     // Update is called once per frame
     void Update(){
