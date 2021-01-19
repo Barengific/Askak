@@ -60,6 +60,33 @@ void TaskOnClick()    {
 
         Vector3 direction = new Vector3(hoz, 0, ver);
         transform.Translate(direction * 0.02f, Space.Self);
+
+        float xMov = Input.GetAxisRaw("Horizontal");
+        float yMov = Input.GetAxisRaw("Vertical");
+        rb.velocity = new Vector3(xMov, rb.velocity.y, yMov);
+
+        //rb.velocity = Camera.main.transform.rotation;
+
+        //if (Input.GetKeyDown("w")){
+        //    //rb.velocity = rb.velocity + Vector3.forward * 5;
+        //    //print("space key was pressed");
+        //    //rb.transform.Translate(new Vector3(0,0,3), Space.Self);
+        //}
+        //if (Input.GetKeyDown("s"))        {
+        //    rb.transform.Translate(new Vector3(0, 0, -3), Space.Self);
+        //    //rb.velocity = rb.velocity + Vector3.back * 5;
+        //}
+        //if (Input.GetKeyDown("a"))        {
+        //    rb.transform.Translate(new Vector3(-3, 0, 0), Space.Self);
+        //    //rb.velocity = rb.velocity + Vector3.left * 5;
+        //}
+        //if (Input.GetKeyDown("d"))        {
+        //    rb.transform.Translate(new Vector3(3, 0, 0), Space.Self);
+        //    //rb.velocity = rb.velocity + Vector3.right * 5;
+        //}
+        if (Input.GetKeyDown("space"))        {
+            rb.velocity = rb.velocity + Vector3.up * 5;
+        }
     }
 
     //private Vector2 convertWCamera(Vector3 camPos, float hoz, float ver)
