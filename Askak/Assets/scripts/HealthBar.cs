@@ -11,20 +11,17 @@ public class HealthBar : MonoBehaviour
     [SerializeField]
     private float updateSpeedsSeconds = 0.5f;
 
-    private void Awake()
-    {
+    private void Awake(){
         //foregroundImage = GetComponent<Image>();
         GetComponentInParent<Health>().OnHealthPctChanged += HandleHealthChanged;
     }
 
-    private void HandleHealthChanged(float pct)
-    {
+    private void HandleHealthChanged(float pct){
         //fore.fillAmount = pct;
         StartCoroutine(ChangeToPct(pct));
     }
 
-    private IEnumerator ChangeToPct(float pct)
-    {
+    private IEnumerator ChangeToPct(float pct){
         float preChangepct = foregroundImage.fillAmount;
         float elapsed = 0f;
         while(elapsed < updateSpeedsSeconds){
@@ -35,8 +32,7 @@ public class HealthBar : MonoBehaviour
         foregroundImage.fillAmount = pct;
     }
 
-    private void LateUpdate()
-    {
+    private void LateUpdate(){
         transform.LookAt(Camera.main.transform);
         transform.Rotate(0, 180, 0);
     }

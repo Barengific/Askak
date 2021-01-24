@@ -63,7 +63,7 @@ void TaskOnClick()    {
 
         float xMov = Input.GetAxisRaw("Horizontal");
         float yMov = Input.GetAxisRaw("Vertical");
-        rb.velocity = new Vector3(xMov, rb.velocity.y, yMov);
+        rb.velocity = new Vector3(xMov*20, rb.velocity.y, yMov*20);
 
         //rb.velocity = Camera.main.transform.rotation;
 

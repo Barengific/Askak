@@ -166,8 +166,11 @@
     <Compile Include="Assets\imports\Standard Assets\Vehicles\Car\Scripts\SkidTrail.cs" />
     <Compile Include="Assets\imports\Standard Assets\Vehicles\Car\Scripts\Suspension.cs" />
     <Compile Include="Assets\imports\Standard Assets\Vehicles\Car\Scripts\WheelEffects.cs" />
+    <Compile Include="Assets\scripts\Hbar.cs" />
     <Compile Include="Assets\scripts\Health.cs" />
     <Compile Include="Assets\scripts\HealthBar.cs" />
+    <Compile Include="Assets\scripts\Player.cs" />
+    <Compile Include="Assets\scripts\Sbar.cs" />
     <Compile Include="Assets\scripts\Stamina.cs" />
     <Compile Include="Assets\scripts\StaminaBar.cs" />
     <Compile Include="Assets\scripts\min_ai.cs" />

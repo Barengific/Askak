@@ -7,37 +7,32 @@ public class StaminaBar : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    private Image StaminaImage;
+    private Image staminaImage;
     [SerializeField]
-    private float updateSpeedsSeconds = 5f;
+    private float updateSpeedsSeconds = 0.5f;
 
-    private void Awake()
-    {
+    private void Awake(){
         //foregroundImage = GetComponent<Image>();
         GetComponentInParent<Stamina>().OnStaminaPctChanged += HandleStaminaChanged;
     }
 
-    private void HandleStaminaChanged(float pct)
-    {
+    private void HandleStaminaChanged(float pct){
         //fore.fillAmount = pct;
         StartCoroutine(ChangeToPct(pct));
     }
 
-    private IEnumerator ChangeToPct(float pct)
-    {
-        float preChangepct = StaminaImage.fillAmount;
+    private IEnumerator ChangeToPct(float pct){
+        float preChangepct = staminaImage.fillAmount;
         float elapsed = 0f;
         while(elapsed < updateSpeedsSeconds){
             elapsed += Time.deltaTime;
-            StaminaImage.fillAmount = Mathf.Lerp(preChangepct, pct, elapsed / updateSpeedsSeconds);
+            staminaImage.fillAmount = Mathf.Lerp(preChangepct, pct, elapsed / updateSpeedsSeconds);
             yield return null;
-            yield return new WaitForSeconds(2);
         }
-        StaminaImage.fillAmount = pct;
+        staminaImage.fillAmount = pct;
     }
 
-    private void LateUpdate()
-    {
+    private void LateUpdate(){
         transform.LookAt(Camera.main.transform);
         transform.Rotate(0, 180, 0);
     }
